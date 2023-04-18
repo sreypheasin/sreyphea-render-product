@@ -1,23 +1,33 @@
 import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header';
+import React, { useState, useEffect } from "react";
+import ProductCard from './components/ProductCard';
 
 function App() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    async function fetchProducts() {
+      const response = await fetch("https://api.escuelajs.co/api/v1/products");
+      const data = await response.json();
+      setProducts(data);
+    }
+    fetchProducts();
+  }, []);
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <Header/>
       </header>
+      <main>
+        <div className='flex flex-row flex-wrap justify-evenly mb-10'>
+          {products.slice(0,20).map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+      </main>
     </div>
   );
 }
