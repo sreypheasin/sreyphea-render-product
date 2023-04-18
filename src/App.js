@@ -1,5 +1,3 @@
-import logo from './logo.svg';
-import './App.css';
 import Header from './components/Header';
 import React, { useState, useEffect } from "react";
 import ProductCard from './components/ProductCard';
