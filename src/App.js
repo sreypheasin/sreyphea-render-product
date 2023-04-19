@@ -17,10 +17,13 @@ function App() {
     }
     fetchProducts();
   }, []);
+
   // to check is we get all product we need or not yet
 
   useEffect(() => {
-    if (products.length === 20) {
+    // console.log("products.length:", products.length);
+    // console.log("loading:", isLoading);
+    if (products.length === 218) {
       setLoading(false);
       console.log(isLoading)
     }
