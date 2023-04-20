@@ -13,21 +13,12 @@ function App() {
       const response = await fetch("https://api.escuelajs.co/api/v1/products");
       const data = await response.json();
       setProducts(data);
-      console.log(isLoading)
+      // console.log(isLoading)
+      setLoading(false)
+
     }
     fetchProducts();
   }, []);
-
-  // to check is we get all product we need or not yet
-
-  useEffect(() => {
-    // console.log("products.length:", products.length);
-    // console.log("loading:", isLoading);
-    if (products.length === 218) {
-      setLoading(false);
-      console.log(isLoading)
-    }
-  }, [products]);
 
   return (
     <div className="App">
